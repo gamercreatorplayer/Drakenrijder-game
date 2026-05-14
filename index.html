@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>De Laatste Drakenband</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div id="game">
+    <header>
+      <h1>De Laatste Drakenband</h1>
+      <p>Een fantasy-RPG over een jongen, een draak en een oorlog die groter is dan hij ooit had gedacht.</p>
+    </header>
+
+    <main>
+      <section id="left-panel">
+        <h2 id="scene-title"></h2>
+        <p id="scene-text"></p>
+
+        <div id="choices"></div>
+      </section>
+
+      <aside id="right-panel">
+        <h2>Held</h2>
+
+        <div class="stat">
+          <span>Leven</span>
+          <div class="bar">
+            <div id="health-bar"></div>
+          </div>
+          <span id="health-text"></span>
+        </div>
+
+        <div class="stat">
+          <span>Magie</span>
+          <div class="bar">
+            <div id="magic-bar"></div>
+          </div>
+          <span id="magic-text"></span>
+        </div>
+
+        <div class="stat">
+          <span>Draak-band</span>
+          <div class="bar">
+            <div id="bond-bar"></div>
+          </div>
+          <span id="bond-text"></span>
+        </div>
+
+        <h3>Inventaris</h3>
+        <ul id="inventory"></ul>
+
+        <h3>Logboek</h3>
+        <ul id="log"></ul>
+      </aside>
+    </main>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
