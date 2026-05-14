@@ -2,62 +2,64 @@
 <html lang="nl">
 <head>
   <meta charset="UTF-8" />
-  <title>De Laatste Drakenband</title>
+  <title>Drakenrijder 3D - Versie 2</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <canvas id="renderCanvas"></canvas>
 
-  <div id="game">
-    <header>
-      <h1>De Laatste Drakenband</h1>
-      <p>Een fantasy-RPG over een jongen, een draak en een oorlog die groter is dan hij ooit had gedacht.</p>
-    </header>
+  <div id="hud">
+    <div class="panel">
+      <h1>Drakenrijder 3D</h1>
 
-    <main>
-      <section id="left-panel">
-        <h2 id="scene-title"></h2>
-        <p id="scene-text"></p>
+      <div class="bar-wrap">
+        <label>Leven</label>
+        <div class="bar"><div id="healthFill" class="fill health"></div></div>
+        <span id="healthText"></span>
+      </div>
 
-        <div id="choices"></div>
-      </section>
+      <div class="bar-wrap">
+        <label>Magie</label>
+        <div class="bar"><div id="manaFill" class="fill mana"></div></div>
+        <span id="manaText"></span>
+      </div>
 
-      <aside id="right-panel">
-        <h2>Held</h2>
+      <div class="bar-wrap">
+        <label>Draak-band</label>
+        <div class="bar"><div id="bondFill" class="fill bond"></div></div>
+        <span id="bondText"></span>
+      </div>
 
-        <div class="stat">
-          <span>Leven</span>
-          <div class="bar">
-            <div id="health-bar"></div>
-          </div>
-          <span id="health-text"></span>
-        </div>
+      <div class="quest">
+        <strong>Quest:</strong>
+        <div id="questText">Praat met Brom.</div>
+      </div>
 
-        <div class="stat">
-          <span>Magie</span>
-          <div class="bar">
-            <div id="magic-bar"></div>
-          </div>
-          <span id="magic-text"></span>
-        </div>
-
-        <div class="stat">
-          <span>Draak-band</span>
-          <div class="bar">
-            <div id="bond-bar"></div>
-          </div>
-          <span id="bond-text"></span>
-        </div>
-
-        <h3>Inventaris</h3>
-        <ul id="inventory"></ul>
-
-        <h3>Logboek</h3>
-        <ul id="log"></ul>
-      </aside>
-    </main>
+      <div class="controls">
+        <strong>Besturing</strong><br>
+        WASD = lopen / vliegen<br>
+        Shift = sneller<br>
+        Spatie = springen / stijgen<br>
+        C = dalen met draak<br>
+        E = praten / opstappen / afstappen<br>
+        F = zwaardaanval<br>
+        R = magie / drakenvuur<br>
+        Q = draak roepen
+      </div>
+    </div>
   </div>
 
-  <script src="js/data.js"></script>
-  <script src="js/game.js"></script>
+  <div id="dialogue" class="hidden">
+    <div class="dialogue-box">
+      <div id="dialogueName"></div>
+      <div id="dialogueText"></div>
+      <div class="dialogueHint">Druk E om verder te gaan</div>
+    </div>
+  </div>
+
+  <div id="messageBox" class="hidden"></div>
+
+  <script src="https://cdn.babylonjs.com/babylon.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
