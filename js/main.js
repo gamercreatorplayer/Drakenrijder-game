@@ -39,23 +39,96 @@ const houseMat = makeMat("houseMat", 0.55, 0.35, 0.18);
 const player = new BABYLON.TransformNode("player", scene);
 player.position = new BABYLON.Vector3(0, 0, 10);
 
+// Betere speler: lichaam, hoofd, armen, benen, zwaard en cape
 const playerBody = BABYLON.MeshBuilder.CreateBox(
   "playerBody",
-  { width: 1.2, height: 2.2, depth: 0.8 },
+  { width: 1.2, height: 1.8, depth: 0.7 },
   scene
 );
 playerBody.parent = player;
-playerBody.position.y = 1.1;
+playerBody.position.y = 1.45;
 playerBody.material = playerMat;
 
 const playerHead = BABYLON.MeshBuilder.CreateSphere(
   "playerHead",
-  { diameter: 0.8 },
+  { diameter: 0.75 },
   scene
 );
 playerHead.parent = player;
-playerHead.position.y = 2.6;
+playerHead.position.y = 2.75;
 playerHead.material = skinMat;
+
+const leftArm = BABYLON.MeshBuilder.CreateBox(
+  "leftArm",
+  { width: 0.28, height: 1.35, depth: 0.28 },
+  scene
+);
+leftArm.parent = player;
+leftArm.position = new BABYLON.Vector3(-0.85, 1.55, 0);
+leftArm.rotation.z = -0.15;
+leftArm.material = skinMat;
+
+const rightArm = BABYLON.MeshBuilder.CreateBox(
+  "rightArm",
+  { width: 0.28, height: 1.35, depth: 0.28 },
+  scene
+);
+rightArm.parent = player;
+rightArm.position = new BABYLON.Vector3(0.85, 1.55, 0);
+rightArm.rotation.z = 0.15;
+rightArm.material = skinMat;
+
+const leftLeg = BABYLON.MeshBuilder.CreateBox(
+  "leftLeg",
+  { width: 0.36, height: 1.25, depth: 0.36 },
+  scene
+);
+leftLeg.parent = player;
+leftLeg.position = new BABYLON.Vector3(-0.32, 0.45, 0);
+leftLeg.material = playerMat;
+
+const rightLeg = BABYLON.MeshBuilder.CreateBox(
+  "rightLeg",
+  { width: 0.36, height: 1.25, depth: 0.36 },
+  scene
+);
+rightLeg.parent = player;
+rightLeg.position = new BABYLON.Vector3(0.32, 0.45, 0);
+rightLeg.material = playerMat;
+
+const swordMat = makeMat("swordMat", 0.85, 0.85, 0.9);
+
+const swordBlade = BABYLON.MeshBuilder.CreateBox(
+  "swordBlade",
+  { width: 0.12, height: 1.6, depth: 0.12 },
+  scene
+);
+swordBlade.parent = player;
+swordBlade.position = new BABYLON.Vector3(1.15, 1.45, 0.2);
+swordBlade.rotation.z = 0.45;
+swordBlade.material = swordMat;
+
+const swordHandle = BABYLON.MeshBuilder.CreateBox(
+  "swordHandle",
+  { width: 0.18, height: 0.45, depth: 0.18 },
+  scene
+);
+swordHandle.parent = player;
+swordHandle.position = new BABYLON.Vector3(0.72, 1.0, 0.2);
+swordHandle.rotation.z = 0.45;
+swordHandle.material = bromMat;
+
+const capeMat = makeMat("capeMat", 0.5, 0.02, 0.05);
+
+const cape = BABYLON.MeshBuilder.CreateBox(
+  "cape",
+  { width: 1.25, height: 1.65, depth: 0.08 },
+  scene
+);
+cape.parent = player;
+cape.position = new BABYLON.Vector3(0, 1.35, -0.45);
+cape.rotation.x = -0.12;
+cape.material = capeMat;
 
 // Brom
 const brom = new BABYLON.TransformNode("brom", scene);
@@ -226,15 +299,13 @@ function interact() {
     if (mounted) {
       showMessage("Je zit nu op Saphira!");
       camera.lockedTarget = dragon;
-      playerBody.setEnabled(false);
-      playerHead.setEnabled(false);
+      player.setEnabled(false);
     } else {
       showMessage("Je stapt van Saphira.");
       camera.lockedTarget = player;
       player.position = dragon.position.add(new BABYLON.Vector3(2, -3, 2));
       player.position.y = 0;
-      playerBody.setEnabled(true);
-      playerHead.setEnabled(true);
+      player.setEnabled(true);
     }
 
     return;
